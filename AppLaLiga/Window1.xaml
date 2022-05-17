@@ -1,0 +1,270 @@
+﻿<Window x:Class="AppLaLiga.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppLaLiga" xmlns:viewmodels="clr-namespace:AppLaLiga.SCS"
+        mc:Ignorable="d"
+        Title="Window1" Height="900" Width="1320"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        AllowsTransparency="True">
+    <Window.Resources>
+        <DataTemplate x:Name="Clasificacion"
+                      DataType="{x:Type viewmodels:Clasificacion}">
+            <viewmodels:Clasificacion DataContext="{Binding}"/>
+        </DataTemplate>
+    </Window.Resources>
+    <!--#REGION PROYECTO-->
+    <Border Background="#718792"
+            CornerRadius="20">
+        <Grid Name="Principal"
+              Background="Transparent">
+            <!--#REGION HEADER-->
+            <Grid Name="Header"
+                  Height="35"
+                  VerticalAlignment="Top"
+                  Background="Transparent">
+                <Border CornerRadius="10,10,0,0"
+                        Background="#1c313a"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <!--#REGION TITLE-->
+                    <Image HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Grid.Column="0"
+                           Source="laliga-logo.png"
+                           Margin="20,0,0,0" Height="25" Width="21"/>
+
+                    <!--#ENDREGION-->
+                    <!--#REGION MINIMIZAR-->
+                    <!--
+                    <Button x:Name="BtnMinimizar"
+                            Grid.Column="1"
+                            
+                            BorderBrush="Transparent"
+                            Height="25"
+                            Width="25"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Margin="0,5,30,0">
+                       
+                        <Button.Background>
+                            <ImageBrush ImageSource="/SCS/IMG/minimize.png"/>
+                        </Button.Background>
+                    </Button>
+                    -->
+                    <Image x:Name="BtnMini1"
+                            Grid.Column="1"
+                            Source="/SCS/IMG/minimize.png"
+                            Height="20"
+                            Width="20"
+                            Margin="0,5,30,0"
+                            Style="{StaticResource iconApp}"/>
+
+
+                    <!--#ENDREGION-->
+                    <!--#REGION CERRAR-->
+                    <Button x:Name="BtnCerrar"
+                            Grid.Column="1"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            Height="25"
+                            Width="25"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Margin="0,5,5,0">
+
+                        <Image Source="/SCS/IMG/exit.png"
+                               Cursor="Hand"/>
+
+
+                    </Button>
+                    <Image x:Name="BtnCerrar1"
+                            Grid.Column="1"
+                            Source="/SCS/IMG/exit.png"
+                            Height="20"
+                            Width="20"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Margin="0,5,4,0"/>
+                    <!--#ENDREGION-->
+                </Grid>
+
+            </Grid>
+            <!--#ENDREGION-->
+            <!--#REGION  CONTENT-->
+            <Grid x:Name="GridContent"
+                  Background="Transparent"
+                  VerticalAlignment="Bottom"
+                  HorizontalAlignment="Right"
+                  Height="865"
+                  Width="1245">
+                <Border CornerRadius="0,0,0,10"
+                        Background="#718792"/>
+                <ContentControl Content="{Binding}"/>
+            </Grid>
+            <!--#ENDREGION-->
+            <!--#REGION SIDEBAR-->
+            <Grid x:Name="GridMenu"
+                  Background="Transparent"
+                  Width="75"
+                  HorizontalAlignment="Left"
+                  Margin="0,35,0,0">
+                <Border Background="#455a64"
+                        CornerRadius="0,0,0,10"/>
+
+
+                <!--#REGION MENU-->
+                <StackPanel Background="Transparent"
+                            VerticalAlignment="Top">
+                    <!--#REGION SHOW/HIDE-->
+                    <Grid Background="Transparent"
+                          VerticalAlignment="Top"
+                          HorizontalAlignment="Right"
+                          Margin="0,10,10,0">
+                        <ToggleButton x:Name="BtnShowHide"
+                                      Width="30"
+                                      Height="30"
+                                      Cursor="Hand"
+                                      BorderBrush="Transparent" Checked="TBShow" Unchecked="TBHide">
+                            <ToggleButton.Background>
+                                <ImageBrush ImageSource="/SCS/IMG/menu.png"/>
+                            </ToggleButton.Background>
+                            <ToggleButton.Triggers>
+                                <!--#REGION HIDE-->
+                                <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                                    <BeginStoryboard>
+                                        <Storyboard x:Name="HidePanel">
+                                            <DoubleAnimation Storyboard.TargetName="GridMenu"
+                                                             Storyboard.TargetProperty="Width"
+                                                             BeginTime="0:0:0"
+                                                             From="200" To="75"
+                                                             Duration="0:0:0:0.5"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <!--#ENDREGION-->
+                                <!--#REGION SHOW-->
+                                <EventTrigger RoutedEvent="ToggleButton.Checked">
+                                    <BeginStoryboard>
+                                        <Storyboard x:Name="ShowPanel">
+                                            <DoubleAnimation Storyboard.TargetName="GridMenu"
+                                                             Storyboard.TargetProperty="Width"
+                                                             BeginTime="0:0:0"
+                                                             From="75" To="200"
+                                                             Duration="0:0:0:0.5"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <!--#ENDREGION-->
+                            </ToggleButton.Triggers>
+
+                        </ToggleButton>
+
+                    </Grid>
+                    <!--#ENDREGION-->
+                    <!--#REGION LISTA-->
+                    <ListView Background="Transparent"
+                              BorderBrush="Transparent"
+                              Margin="0,30,0,0"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+                        <!--#REGION INICIO-->
+                        <ListViewItem Height="70">
+                            <Button x:Name="BtnClasificacion"
+                                    Height="70"
+                                    Width="200"
+                                    HorizontalAlignment="Left"
+                                    Cursor="Hand"
+                                    Background="Transparent"
+                                    BorderBrush="Transparent" Click="BtnClasificacion_Click">
+                                <Grid Width="200" Margin="-7,10,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="60"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Width="40"
+                                           Grid.Column="0"
+                                           HorizontalAlignment="Left"
+                                           Source="/SCS/IMG/ranking.png"/>
+                                    <TextBlock Grid.Column="1"
+                                               Text="Clasificación"
+                                               FontWeight="SemiBold"
+                                               FontSize="15"
+                                               HorizontalAlignment="Left"
+                                               VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </Grid>
+                            </Button>
+                        </ListViewItem>
+                        <!--#ENDREGION-->
+                        <!--#REGION CALENDARIO-->
+                        <ListViewItem Height="70">
+                            <Button x:Name="BtnCalendario"
+                                    Height="70"
+                                    Width="200"
+                                    HorizontalAlignment="Left"
+                                    Cursor="Hand"
+                                    Background="Transparent"
+                                    BorderBrush="Transparent" Click="BtnCalendario_Click">
+                                <Grid Width="200" Margin="-7,10,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="60"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Width="40"
+                                           Grid.Column="0"
+                                           HorizontalAlignment="Left"
+                                           Source="/SCS/IMG/calendar.png"/>
+                                    <TextBlock Grid.Column="1"
+                                               Text="Calendario"
+                                               FontWeight="SemiBold"
+                                               FontSize="15"
+                                               HorizontalAlignment="Left"
+                                               VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </Grid>
+                            </Button>
+                        </ListViewItem>
+                        <!--#ENDREGION-->
+                        <!--#REGION CLUBS-->
+                        <ListViewItem Height="70">
+                            <Button x:Name="BtnClubs"
+                                    Height="70"
+                                    Width="200"
+                                    HorizontalAlignment="Left"
+                                    Cursor="Hand"
+                                    Background="Transparent"
+                                    BorderBrush="Transparent">
+                                <Grid Width="200" Margin="-7,10,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="60"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Width="40"
+                                           Grid.Column="0"
+                                           HorizontalAlignment="Left"
+                                           Source="/SCS/IMG/football-club.png"/>
+                                    <TextBlock Grid.Column="1"
+                                               Text="Clubs"
+                                               FontWeight="SemiBold"
+                                               FontSize="15"
+                                               HorizontalAlignment="Left"
+                                               VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </Grid>
+                            </Button>
+                        </ListViewItem>
+                        <!--#ENDREGION-->
+                    </ListView>
+                    <!--#ENDREGION-->
+                </StackPanel>
+                <!--#ENDREGION-->
+            </Grid>
+            <!--#ENDREGION-->
+        </Grid>
+    </Border>
+    <!--#ENDREGION-->
+</Window>

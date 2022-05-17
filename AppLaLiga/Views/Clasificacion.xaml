@@ -1,0 +1,121 @@
+﻿<UserControl x:Class="AppLaLiga.SCS.Clasificacion"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AppLaLiga.SCS"
+             mc:Ignorable="d" 
+             d:DesignHeight="865" d:DesignWidth="1245"
+             Background="Transparent">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="Background" Value="Beige"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="{x:Type DataGridCell}">
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="true">
+                    <Setter Property="Background" Value="#718792"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="white"/>
+                </Trigger>
+            </Style.Triggers>
+            <Style.Setters>
+                <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                <Setter Property="Height" Value="34" />
+            </Style.Setters>
+        </Style>
+        <Style x:Key="RightAligned" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+    </UserControl.Resources>
+    
+    <!--#REGION CONTENIDO-->
+    <Border CornerRadius="10"
+            Background="#718792">
+        <Grid Name="GridClasificacion">
+            <!--#REGION COL&ROWS-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition />
+                <ColumnDefinition Width="80"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="15"/>
+                <RowDefinition />
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <!--#ENDREGION-->
+            <!--#REGION TITULO-->
+            <TextBlock Grid.Row="1"
+                       Grid.Column="1"
+                       Text="Tabla de Clasificación de la LaLiga Santander 2021/2022"
+                       FontSize="30"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+            <!--#ENDREGION-->
+            <!--#REGION DATAGRID-->
+            <DataGrid x:Name="GridDatos"
+                      Grid.Row="3"
+                      Grid.Column="1"
+                      AutoGenerateColumns="False"
+                      Background="#455a64"
+                      Foreground="White"
+                      FontSize="15"
+                      CanUserAddRows="False"
+                      CanUserResizeColumns="False"
+                      CanUserResizeRows="False"
+                      CanUserSortColumns="False"
+                      CanUserDeleteRows="False"
+                      CanUserReorderColumns="False"
+                      RowBackground="Transparent"
+                      HeadersVisibility="Column"
+                      GridLinesVisibility="Horizontal"
+                      HorizontalGridLinesBrush="#718792"
+                      BorderBrush="AliceBlue"
+                      HorizontalAlignment="Center">
+                <DataGrid.Columns>
+                    <!--<DataGridTemplateColumn Header="Posición"
+                                            Width="245">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <DockPanel>
+                                    --><!--CREACION BOTONES PARA CRUD--><!--
+                                </DockPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>-->
+                    <DataGridTextColumn Header="Posición"
+                                        Width="*"
+                                        Binding="{Binding rowNum}"/>
+                    <DataGridTextColumn Header="Equipo"
+                                        Width="150"
+                                        Binding="{Binding cNombre}"/>
+                    <DataGridTextColumn Header="Puntos"
+                                        Width="*"
+                                        Binding="{Binding nPuntos}"/>
+                    <DataGridTextColumn Header="PJ"
+                                        Width="*"
+                                        Binding="{Binding nPJ}"/>
+                    <DataGridTextColumn Header="PG"
+                                        Width="*"
+                                        Binding="{Binding nPG}"/>
+                    <DataGridTextColumn Header="PE"
+                                        Width="*"
+                                        Binding="{Binding nPE}"/>
+                    <DataGridTextColumn Header="PP"
+                                        Width="*"
+                                        Binding="{Binding nPP}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <!--#ENDREGION-->           
+        </Grid>
+    </Border>
+    <!--#ENDREGION-->
+    
+</UserControl>
