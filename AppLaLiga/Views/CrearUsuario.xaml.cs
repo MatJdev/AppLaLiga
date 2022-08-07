@@ -91,13 +91,13 @@ namespace AppLaLiga.Views
                                 mailMessage.IsBodyHtml = false;
 
                                 //remitente
-                                mailMessage.From = new MailAddress("m.jarquez@cesjuanpablosegundocadiz.es", "LaLiga");
+                                mailMessage.From = new MailAddress("email@gmail.com", "LaLiga");
 
                                 using (SmtpClient cliente = new SmtpClient())
                                 {
                                     //contrasenas
                                     cliente.UseDefaultCredentials = false;
-                                    cliente.Credentials = new NetworkCredential("aspigo4@gmail.com", "aspirex3");
+                                    cliente.Credentials = new NetworkCredential("email@gmail.com", "password");
                                     cliente.Port = 587;
                                     cliente.EnableSsl = true;
 
