@@ -27,7 +27,8 @@
                   VerticalAlignment="Top"
                   Background="Transparent">
                 <Border CornerRadius="10,10,0,0"
-                        Background="#1c313a"/>
+                        Background="#1c313a"
+                        Loaded="RestaurarVentana"/>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -42,56 +43,87 @@
 
                     <!--#ENDREGION-->
                     <!--#REGION MINIMIZAR-->
-                    <!--
+
                     <Button x:Name="BtnMinimizar"
                             Grid.Column="1"
                             
                             BorderBrush="Transparent"
-                            Height="25"
-                            Width="25"
+                            Height="20"
+                            Width="20"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Top"
-                            Margin="0,5,30,0">
-                       
+                            Margin="0,5,30,0" Click="BtnMinimizar_Click">
+
                         <Button.Background>
                             <ImageBrush ImageSource="/SCS/IMG/minimize.png"/>
                         </Button.Background>
                     </Button>
-                    -->
-                    <Image x:Name="BtnMini1"
+
+                    <!--<Image x:Name="BtnMini1"
                             Grid.Column="1"
                             Source="/SCS/IMG/minimize.png"
                             Height="20"
                             Width="20"
                             Margin="0,5,30,0"
-                            Style="{StaticResource iconApp}"/>
+                            Style="{StaticResource iconApp}"/>-->
 
 
                     <!--#ENDREGION-->
                     <!--#REGION CERRAR-->
                     <Button x:Name="BtnCerrar"
                             Grid.Column="1"
-                            Background="Transparent"
                             BorderBrush="Transparent"
-                            Height="25"
-                            Width="25"
+                            Height="20"
+                            Width="20"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Top"
-                            Margin="0,5,5,0">
+                            Margin="0,5,5,0" Click="BtnCerrar_Click">
 
-                        <Image Source="/SCS/IMG/exit.png"
-                               Cursor="Hand"/>
-
+                        <!--<Image Source="/SCS/IMG/exit.png"
+                               Cursor="Hand"
+                               Height="25"
+                               Width="25"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
+                        <Button.Background>
+                            <ImageBrush ImageSource="/SCS/IMG/exit.png"/>
+                        </Button.Background>
 
                     </Button>
-                    <Image x:Name="BtnCerrar1"
+                    <!--<Image x:Name="BtnCerrar1"
                             Grid.Column="1"
                             Source="/SCS/IMG/exit.png"
                             Height="20"
                             Width="20"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Top"
-                            Margin="0,5,4,0"/>
+                            Margin="0,5,4,0"/>-->
+                    <!--#ENDREGION-->
+                    <!--#REGION MICUENTA-->
+                    <Button x:Name="BtnMiCuenta"
+                            Height="30"
+                            Width="130"
+                            Grid.Column="0"
+                            HorizontalAlignment="Right"
+                            Cursor="Hand"
+                            Background="Transparent"
+                            BorderBrush="Transparent" Click="BtnMiCuenta_Click">
+                        <Grid Width="200" Height="24">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Image Width="40"
+                                           Grid.Column="0"
+                                           HorizontalAlignment="Left"
+                                           Source="/SCS/IMG/programmer.png"/>
+                            <TextBlock Text="Mi Cuenta"
+                                       Foreground="WhiteSmoke"
+                                       FontWeight="SemiBold"
+                                       FontSize="15"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center" Margin="29,0,0,0" Grid.ColumnSpan="2"/>
+                        </Grid>
+                    </Button>
                     <!--#ENDREGION-->
                 </Grid>
 
@@ -100,13 +132,13 @@
             <!--#REGION  CONTENT-->
             <Grid x:Name="GridContent"
                   Background="Transparent"
-                  VerticalAlignment="Bottom"
-                  HorizontalAlignment="Right"
-                  Height="865"
-                  Width="1245">
-                <Border CornerRadius="0,0,0,10"
+                  Margin="0,35,0,-5" PreviewMouseLeftButtonDown="PreviewMouseLeftButtonDownBG">
+                <Border CornerRadius="0,0,10,20"
                         Background="#718792"/>
-                <ContentControl Content="{Binding}"/>
+                <ContentControl Content="{Binding}"
+                                Margin="70 0 0 0"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"/>
             </Grid>
             <!--#ENDREGION-->
             <!--#REGION SIDEBAR-->
@@ -191,9 +223,10 @@
                                     <Image Width="40"
                                            Grid.Column="0"
                                            HorizontalAlignment="Left"
-                                           Source="/SCS/IMG/ranking.png"/>
+                                           Source="/SCS/IMG/ranking1.png"/>
                                     <TextBlock Grid.Column="1"
                                                Text="Clasificación"
+                                               Foreground="WhiteSmoke"
                                                FontWeight="SemiBold"
                                                FontSize="15"
                                                HorizontalAlignment="Left"
@@ -219,9 +252,10 @@
                                     <Image Width="40"
                                            Grid.Column="0"
                                            HorizontalAlignment="Left"
-                                           Source="/SCS/IMG/calendar.png"/>
+                                           Source="/SCS/IMG/calendar1.png"/>
                                     <TextBlock Grid.Column="1"
                                                Text="Calendario"
+                                               Foreground="WhiteSmoke"
                                                FontWeight="SemiBold"
                                                FontSize="15"
                                                HorizontalAlignment="Left"
@@ -238,7 +272,7 @@
                                     HorizontalAlignment="Left"
                                     Cursor="Hand"
                                     Background="Transparent"
-                                    BorderBrush="Transparent">
+                                    BorderBrush="Transparent" Click="BtnClubs_Click">
                                 <Grid Width="200" Margin="-7,10,0,10">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="60"/>
@@ -247,9 +281,39 @@
                                     <Image Width="40"
                                            Grid.Column="0"
                                            HorizontalAlignment="Left"
-                                           Source="/SCS/IMG/football-club.png"/>
+                                           Source="/SCS/IMG/football-club1.png"/>
                                     <TextBlock Grid.Column="1"
                                                Text="Clubs"
+                                               Foreground="WhiteSmoke"
+                                               FontWeight="SemiBold"
+                                               FontSize="15"
+                                               HorizontalAlignment="Left"
+                                               VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </Grid>
+                            </Button>
+                        </ListViewItem>
+                        <!--#ENDREGION-->
+                        <!--#REGION USERS-->
+                        <ListViewItem Height="70" x:Name="LvUsers">
+                            <Button x:Name="BtnUsers"
+                                    Height="70"
+                                    Width="200"
+                                    HorizontalAlignment="Left"
+                                    Cursor="Hand"
+                                    Background="Transparent"
+                                    BorderBrush="Transparent" Click="BtnUsers_Click">
+                                <Grid Width="200" Margin="-7,10,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="60"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Width="40"
+                                           Grid.Column="0"
+                                           HorizontalAlignment="Left"
+                                           Source="/SCS/IMG/man.png"/>
+                                    <TextBlock Grid.Column="1"
+                                               Text="Usuarios"
+                                               Foreground="WhiteSmoke"
                                                FontWeight="SemiBold"
                                                FontSize="15"
                                                HorizontalAlignment="Left"

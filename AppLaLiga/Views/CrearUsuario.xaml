@@ -1,0 +1,74 @@
+﻿<Window x:Class="AppLaLiga.Views.CrearUsuario"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:uc="clr-namespace:AppLaLiga.Views"
+        mc:Ignorable="d"
+        Title="CrearUsuario" Height="650" Width="1000"
+        Background="Transparent" WindowStyle="None"
+        WindowStartupLocation="CenterScreen" AllowsTransparency="True">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <!--#REGION LEFTSECTION-->
+        <Border Background="GreenYellow" Padding="30" CornerRadius="25 0 0 25">
+            <StackPanel VerticalAlignment="Center">
+                <Image Source="/SCS/IMG/laliga-logo.png" Width="160" Height="160" Margin="0 0 0 40"/>
+                <TextBlock Text="Regístrate!!" TextAlignment="Center" FontWeight="SemiBold" FontSize="28" Foreground="Black"/>
+                <TextBlock TextWrapping="Wrap" FontSize="16" TextAlignment="Center" Foreground="#363636" Margin="0 20 0 20" Text="Solo te llevará unos segundos,       podrás enterarte de toda la actualidad de LaLiga"/>
+            </StackPanel>
+
+        </Border>
+        <!--#ENDREGION-->
+        <!--#REGION INPUT-->
+        <Border Grid.Column="1" Padding="20" Background="#ffffff" CornerRadius="0 25 25 0">
+            <Grid>
+                <!--<Image Source="/SCS/IMG/exit.png" Width="25" Margin="0 4 5 0" Style="{StaticResource iconApp}" ContextMenuClosing="Btn_Exit"/>
+                <Image Source="/SCS/IMG/minimize.png" Width="25" Margin="0,4,35,0" Style="{StaticResource iconApp}" Height="25"/>-->
+
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Nombre de Usuario" Style="{StaticResource text}"/>
+                    <TextBlock Grid.Row="1" Text="Contraseña" Style="{StaticResource text}"/>
+                    <TextBlock Grid.Row="2" Text="Email" Style="{StaticResource text}"/>
+                    <TextBlock Grid.Row="3" Text="DNI" Style="{StaticResource text}"/>
+
+                    <uc:TextBoxPerso Grid.Column="1" Grid.Row="0" Hint="Nombre" x:Name="nombreU"/>
+                    <uc:TextBoxPerso Grid.Column="1" Grid.Row="1" Hint="Password" x:Name="passU"/>
+                    <uc:TextBoxPerso Grid.Column="1" Grid.Row="2" Hint="email@laliga.com" x:Name="emailU"/>
+                    <uc:TextBoxPerso Grid.Column="1" Grid.Row="3" Hint="12345678A" x:Name="dniU"/>
+
+                    <Grid Grid.Column="1" Grid.Row="4" Margin="0 40 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Content="Cancelar" Margin="0 0 10 0" Width="120" Style="{StaticResource buttonMain}" Click="Btn_Cancelar"/>
+                        <Button Content="Registrarme" Margin="10 0 0 0" Width="120" Grid.Column="1" Style="{StaticResource buttonMainGreen}" Click="Btn_Registrar"/>
+                    </Grid>
+
+                </Grid>
+            </Grid>
+        </Border>
+        <!--#ENDREGION-->
+    </Grid>
+</Window>

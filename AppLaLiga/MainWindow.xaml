@@ -23,14 +23,14 @@
 
 
                         <StackPanel Margin="16 10 0 6" Orientation="Horizontal" HorizontalAlignment="Center">
-                            <TextBlock  VerticalAlignment="Center" Text="Dark Mode" />
-                            <ToggleButton Cursor="Hand" ToolTip="Enable Dark Mode" Margin="12 0 8 0" x:Name="themeToggle" IsChecked="{Binding IsDarkTheme}" Click="toggleTheme"/>
+                            <TextBlock  VerticalAlignment="Center" Text="Modo Oscuro" />
+                            <ToggleButton Cursor="Hand" ToolTip="Habilitar el Modo Oscuro" Margin="12 0 8 0" x:Name="themeToggle" IsChecked="{Binding IsDarkTheme}" Click="toggleTheme"/>
                         </StackPanel>
 
 
-                        <Button ToolTip="Having Troubles in Logging In?" Margin="0 8 0 0" Content="Help Me" />
+                        <Button ToolTip="Si no tienes una cuenta, regístrate!" Margin="0 8 0 0" Content="Ayuda" />
 
-                        <Button x:Name="Btn_Exit" ToolTip="Close Application" Content="Exit Application" Click="exitApp"/>
+                        <Button x:Name="Btn_Exit" ToolTip="Se cerrará la app completamente" Content="Cerrar App" Click="exitApp"/>
 
                     </StackPanel>
                 </materialDesign:PopupBox>
@@ -52,7 +52,7 @@
                 <Button  Margin="0,20,0,0" x:Name="loginBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Iniciar Sesión" Click="doLogin"></Button>
 
 
-                <Button Margin="0,20,0,0" x:Name="signupBtn" Style="{StaticResource MaterialDesignFlatButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Crear Cuenta"></Button>
+                <Button Margin="0,20,0,0" x:Name="signupBtn" Style="{StaticResource MaterialDesignFlatButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Crear Cuenta" Click="crearCuenta"></Button>
             </StackPanel>
         </materialDesign:DialogHost>
     </materialDesign:Card>

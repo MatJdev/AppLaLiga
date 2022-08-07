@@ -24,16 +24,21 @@
                 </Trigger>
             </Style.Triggers>
             <Style.Setters>
-                <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                <Setter Property="Height" Value="34" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="Foreground" Value="white"/>
+                <Setter Property="IsEnabled" Value="True" />
             </Style.Setters>
         </Style>
         <Style x:Key="RightAligned" TargetType="TextBlock">
             <Setter Property="HorizontalAlignment" Value="Right"/>
         </Style>
     </UserControl.Resources>
-    <Border CornerRadius="10"
-            Background="#718792">
+    <Border CornerRadius="10">
+        <Border.Background>
+            <ImageBrush ImageSource="/SCS/IMG/fondo4.jpeg"/>
+        </Border.Background>
         <Grid Name="GridCalendario">
             <!--#REGION COL&ROWS-->
             <Grid.ColumnDefinitions>
@@ -46,25 +51,67 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="15"/>
                 <RowDefinition Height="50"/>
-                <RowDefinition Height="15"/>
-                <RowDefinition Height="40"/>
+
+                <RowDefinition Height="120"/>
                 <RowDefinition />
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="185"/>
             </Grid.RowDefinitions>
             <!--#ENDREGION-->
             <!--#REGION TITULO-->
+            <Border Background="DarkSeaGreen"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Grid.ColumnSpan="3"
+                    Width="730"
+                    CornerRadius="10"
+                    Margin="5"/>
+            <Border Background="DarkSeaGreen"
+                    Grid.Column="1"
+                    Grid.Row="2"
+                    CornerRadius="10"
+                    Margin="0,20,4,27"/>
+            <Border Background="DarkSeaGreen"
+                    Grid.Row="3"
+                    CornerRadius="10"
+                    Margin="79,10,5,389" Grid.ColumnSpan="2"/>
             <TextBlock Grid.Row="1"
                        Grid.Column="1"
                        Grid.ColumnSpan="3"
                        Text="Calendario y Resultados Jornadas LaLiga 2021/2022"
                        FontSize="30"
+                       Foreground="Black"
+                       FontWeight="SemiBold"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"/>
+            <TextBlock  Grid.Row="2"
+                        Grid.Column="1"
+                        Grid.RowSpan="3"
+                        Text="Jornada Nº"
+                        VerticalAlignment="Top"
+                        Foreground="Black"
+                        FontSize="20" Margin="10,20,675,0" Grid.ColumnSpan="2"/>
+            <TextBlock  Grid.Row="3"
+                        Grid.Column="1"
+                        Text="Buscar partidos por Equipo"
+                        VerticalAlignment="Top"
+                        Foreground="Black"
+                        FontSize="15" Margin="10,15,5,0"/>
+            <TextBox Grid.Column="1"
+                     x:Name="tbBuscar"
+                     Grid.Row="3"
+                     FontSize="15" Margin="2,40,8,0" VerticalAlignment="Top"/>
+            <Button Grid.Column="1"
+                    Grid.Row="3"
+                    Width="80"
+                    Height="27"
+                    Background="Beige"
+                    BorderBrush="#455a64"
+                    Content="Buscar" Margin="57,72,63,396" Click="BtnBuscar"/>
             <!--#ENDREGION-->
             <!--#REGION COMBOBOX-->
-            <ComboBox Grid.Row="3"
+            <ComboBox Grid.Row="2"
                       Grid.Column="1"
-                      x:Name="cbJornada" SelectionChanged="cbJornada_SelectionChanged">
+                      x:Name="cbJornada" SelectionChanged="cbJornada_SelectionChanged" Margin="10,55,16,0" VerticalAlignment="Top" Height="30" Grid.RowSpan="2">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -76,7 +123,7 @@
             <!--#ENDREGION-->
             <!--#REGION DATAGRID-->
             <DataGrid x:Name="GridDatos"
-                      Grid.Row="4"
+                      Grid.Row="3"
                       Grid.Column="2"
                       AutoGenerateColumns="False"
                       Background="#455a64"
@@ -93,37 +140,50 @@
                       GridLinesVisibility="Horizontal"
                       HorizontalGridLinesBrush="#718792"
                       BorderBrush="AliceBlue"
-                      HorizontalAlignment="Center">
+                      HorizontalAlignment="Center" RowHeight="44">
                 <DataGrid.Columns>
-                    <!--<DataGridTemplateColumn Header="Posición"
-                                            Width="245">
+                    <DataGridTemplateColumn Header="Admin"
+                                            Width="100"
+                                            Visibility="Visible"
+                                            x:Name="Admin">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <DockPanel>
-                                    -->
-                    <!--CREACION BOTONES PARA CRUD-->
-                    <!--
+                                    <!--CREACION BOTONES PARA CRUD-->
+                                    <Button Content="Editar"
+                                            x:Name="BtnEditar"
+                                            Background="Beige"
+                                            Width="70"
+                                            BorderBrush="Transparent" Click="BtnEditar_Click"
+                                            CommandParameter="{Binding nPartidoID}"/>
                                 </DockPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>-->
+                    </DataGridTemplateColumn>
                     <DataGridTextColumn Header="Fecha"
-                                        Width="80"
-                                        Binding="{Binding dPartido}"/>
+                                        Width="*"
+                                        Binding="{Binding FechaPart}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="Equipo Local"
                                         Width="*"
-                                        Binding="{Binding cEquipo1}"/>
+                                        Binding="{Binding cEquipo1}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="Resultado"
                                         Width="*"
-                                        Binding="{Binding cResultado}"/>
+                                        Binding="{Binding cResultado}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="Equipo Visitante"
                                         Width="*"
-                                        Binding="{Binding cEquipo2}"/>
-                    
+                                        Binding="{Binding cEquipo2}" IsReadOnly="True"/>
+
                 </DataGrid.Columns>
             </DataGrid>
             <!--#ENDREGION-->
+            <!--#REGION FRAMECLUB-->
+            <Frame x:Name="FrameEditJornadas"
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   Grid.RowSpan="6"
+                   Grid.ColumnSpan="5"/>
+            <!--#ENDREGION-->
         </Grid>
     </Border>
-    
+
 </UserControl>

@@ -7,8 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="865" d:DesignWidth="1245"
              Background="Transparent">
-    <Border CornerRadius="10"
-            Background="#718792">
+    <Border CornerRadius="10">
+        <Border.Background>
+            <ImageBrush ImageSource="/SCS/IMG/fondo2.jpeg"/>
+        </Border.Background>
         <Grid Name="GridCalendario">
             <!--#REGION COL&ROWS-->
             <Grid.ColumnDefinitions>
@@ -35,35 +37,351 @@
             </Grid.RowDefinitions>
             <!--#ENDREGION-->
             <!--#REGION TITULO-->
+            <Border Background="DarkSeaGreen"
+                    Grid.Column="2"
+                    Grid.Row="1"
+                    Grid.ColumnSpan="4"
+                    Width="400"
+                    CornerRadius="20"
+                    Margin="5"/>
             <TextBlock Grid.Row="1"
                        Grid.Column="1"
                        Grid.ColumnSpan="6"
                        Text="Clubs LaLiga 2021/2022"
                        FontSize="30"
+                       FontWeight="SemiBold"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"/>
             <!--#ENDREGION-->
             <!--#REGION CUADROS-->
-            <ListViewItem Height="150"
-                          Width="190"
+            <ListViewItem Height="165"
+                          Width="210"
                           Grid.Row="4"
                           Grid.Column="1">
-                <Button x:Name="BtnClasificacion"
-                        Height="150"
-                        Width="190"
+                <Button x:Name="BtnAthletic"
+                        Height="165"
+                        Width="210"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Cursor="Hand"
                         Background="Transparent"
-                        BorderBrush="Transparent" Click="BtnClasificacion_Click">
-                    <Image Width="105"
-                           Grid.Column="0"
-                           HorizontalAlignment="Left"
-                           Source="/SCS/IMG/athletic.jpg" Height="100"/>
+                        BorderBrush="Transparent" Click="BtnAthletic_Click" >
+                    <Image Width="178"
+                           Source="/SCS/IMG/ath.jpg" Height="148"/>
+                </Button>
+            </ListViewItem>
+            <ListViewItem Height="165"
+                          Width="210"
+                          Grid.Row="4"
+                          Grid.Column="2">
+                <Button x:Name="BtnAtm"
+                        Height="165"
+                        Width="210"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Cursor="Hand"
+                        Background="Transparent"
+                        BorderBrush="Transparent" Click="BtnAtm_Click" >
+                    <Image Width="178"
+                           Source="/SCS/IMG/atm1.jpg" Height="148"/>
+                </Button>
+            </ListViewItem>
+            <ListViewItem Height="165"
+                          Width="210"
+                          Grid.Row="4"
+                          Grid.Column="3">
+                <Button x:Name="BtnCadiz"
+                        Height="165"
+                        Width="210"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Cursor="Hand"
+                        Background="Transparent"
+                        BorderBrush="Transparent" Click="BtnCadiz_Click" >
+                    <Image Width="178"
+                           Source="/SCS/IMG/cadizCf.jpg" Height="148"/>
+                </Button>
+            </ListViewItem>
+            <ListViewItem Height="165"
+                          Width="210"
+                          Grid.Row="4"
+                          Grid.Column="5">
+                <Button x:Name="BtnOsasuna"
+                        Height="165"
+                        Width="210"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Cursor="Hand"
+                        Background="Transparent"
+                        BorderBrush="Transparent" Click="BtnOsasuna_Click">
+                    <Image Width="178"
+                           Source="/SCS/IMG/osasuna.jpg" Height="148"/>
+                </Button>
+            </ListViewItem>
+            <ListViewItem Height="165"
+                          Width="210"
+                          Grid.Row="4"
+                          Grid.Column="6">
+                <Button x:Name="BtnAlaves"
+                        Height="165"
+                        Width="210"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Cursor="Hand"
+                        Background="Transparent"
+                        BorderBrush="Transparent" Click="BtnAlaves_Click" >
+                    <Image Width="178"
+                           Source="/SCS/IMG/alaves.jpg" Height="148"/>
+                </Button>
+            </ListViewItem>
+            <ListViewItem Height="165"
+                          Width="210"
+                          Grid.Row="6"
+                          Grid.Column="1">
+                <Button x:Name="BtnElche"
+                        Height="165"
+                        Width="210"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Cursor="Hand"
+                        Background="Transparent"
+                        BorderBrush="Transparent" Click="BtnElche_Click" >
+                    <Image Width="178"
+                           Source="/SCS/IMG/elche.jpg" Height="148"/>
+                </Button>
+            </ListViewItem>
+            <ListViewItem Height="165"
+                          Width="210"
+                          Grid.Row="6"
+                          Grid.Column="2">
+                <Button x:Name="BtnBarcelona"
+                        Height="165"
+                        Width="210"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Cursor="Hand"
+                        Background="Transparent"
+                        BorderBrush="Transparent" Click="BtnBarcelona_Click" >
+                    <Image Width="178"
+                           Source="/SCS/IMG/bacelona.jpg" Height="148"/>
+                </Button>
+            </ListViewItem>
+            <ListViewItem Height="165"
+                          Width="210"
+                          Grid.Row="6"
+                          Grid.Column="3">
+                <Button x:Name="BtnGetafe"
+                        Height="165"
+                        Width="210"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Cursor="Hand"
+                        Background="Transparent"
+                        BorderBrush="Transparent" Click="BtnGetafe_Click" >
+                    <Image Width="178"
+                           Source="/SCS/IMG/getafe.jpg" Height="148"/>
+                </Button>
+            </ListViewItem>
+            <ListViewItem Height="165"
+                          Width="210"
+                          Grid.Row="6"
+                          Grid.Column="5">
+                <Button x:Name="BtnGranada"
+                        Height="165"
+                        Width="210"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Cursor="Hand"
+                        Background="Transparent"
+                        BorderBrush="Transparent" Click="BtnGranada_Click">
+                    <Image Width="178"
+                           Source="/SCS/IMG/granada.jpg" Height="148"/>
+                </Button>
+            </ListViewItem>
+            <ListViewItem Height="165"
+                          Width="210"
+                          Grid.Row="6"
+                          Grid.Column="6">
+                <Button x:Name="BtnLevante"
+                        Height="165"
+                        Width="210"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Cursor="Hand"
+                        Background="Transparent"
+                        BorderBrush="Transparent" Click="BtnLevante_Click" >
+                    <Image Width="178"
+                           Source="/SCS/IMG/levante.jpg" Height="148"/>
+                </Button>
+            </ListViewItem>
+            <ListViewItem Height="165"
+                          Width="210"
+                          Grid.Row="7"
+                          Grid.Column="1">
+                <Button x:Name="BtnRayo"
+                        Height="165"
+                        Width="210"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Cursor="Hand"
+                        Background="Transparent"
+                        BorderBrush="Transparent" Click="BtnRayo_Click" >
+                    <Image Width="178"
+                           Source="/SCS/IMG/rayo.jpg" Height="148"/>
+                </Button>
+            </ListViewItem>
+            <ListViewItem Height="165"
+                          Width="210"
+                          Grid.Row="7"
+                          Grid.Column="2">
+                <Button x:Name="BtnCelta"
+                        Height="165"
+                        Width="210"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Cursor="Hand"
+                        Background="Transparent"
+                        BorderBrush="Transparent" Click="BtnCelta_Click" >
+                    <Image Width="178"
+                           Source="/SCS/IMG/celta.jpg" Height="148"/>
+                </Button>
+            </ListViewItem>
+            <ListViewItem Height="165"
+                          Width="210"
+                          Grid.Row="7"
+                          Grid.Column="3">
+                <Button x:Name="BtnEspanyol"
+                        Height="165"
+                        Width="210"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Cursor="Hand"
+                        Background="Transparent"
+                        BorderBrush="Transparent" Click="BtnEspanyol_Click" >
+                    <Image Width="178"
+                           Source="/SCS/IMG/espanyol.jpg" Height="148"/>
+                </Button>
+            </ListViewItem>
+            <ListViewItem Height="165"
+                          Width="210"
+                          Grid.Row="7"
+                          Grid.Column="5">
+                <Button x:Name="BtnMallorca"
+                        Height="165"
+                        Width="210"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Cursor="Hand"
+                        Background="Transparent"
+                        BorderBrush="Transparent" Click="BtnMallorca_Click">
+                    <Image Width="178"
+                           Source="/SCS/IMG/mallorca.jpg" Height="148"/>
+                </Button>
+            </ListViewItem>
+            <ListViewItem Height="165"
+                          Width="210"
+                          Grid.Row="7"
+                          Grid.Column="6">
+                <Button x:Name="BtnBetis"
+                        Height="165"
+                        Width="210"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Cursor="Hand"
+                        Background="Transparent"
+                        BorderBrush="Transparent" Click="BtnBetis_Click" >
+                    <Image Width="178"
+                           Source="/SCS/IMG/betis.jpg" Height="148"/>
+                </Button>
+            </ListViewItem>
+            <ListViewItem Height="165"
+                          Width="210"
+                          Grid.Row="8"
+                          Grid.Column="1">
+                <Button x:Name="BtnRealMadrid"
+                        Height="165"
+                        Width="210"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Cursor="Hand"
+                        Background="Transparent"
+                        BorderBrush="Transparent" Click="BtnRealMadrid_Click" >
+                    <Image Width="178"
+                           Source="/SCS/IMG/realmadrid.jpg" Height="148"/>
+                </Button>
+            </ListViewItem>
+            <ListViewItem Height="165"
+                          Width="210"
+                          Grid.Row="8"
+                          Grid.Column="2">
+                <Button x:Name="BtnRealSociedad"
+                        Height="165"
+                        Width="210"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Cursor="Hand"
+                        Background="Transparent"
+                        BorderBrush="Transparent" Click="BtnRealSociedad_Click" >
+                    <Image Width="178"
+                           Source="/SCS/IMG/realsociedad.jpg" Height="148"/>
+                </Button>
+            </ListViewItem>
+            <ListViewItem Height="165"
+                          Width="210"
+                          Grid.Row="8"
+                          Grid.Column="3">
+                <Button x:Name="BtnSevilla"
+                        Height="165"
+                        Width="210"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Cursor="Hand"
+                        Background="Transparent"
+                        BorderBrush="Transparent" Click="BtnSevilla_Click" >
+                    <Image Width="178"
+                           Source="/SCS/IMG/sevilla.jpg" Height="148"/>
+                </Button>
+            </ListViewItem>
+            <ListViewItem Height="165"
+                          Width="210"
+                          Grid.Row="8"
+                          Grid.Column="5">
+                <Button x:Name="BtnValencia"
+                        Height="165"
+                        Width="210"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Cursor="Hand"
+                        Background="Transparent"
+                        BorderBrush="Transparent" Click="BtnValencia_Click">
+                    <Image Width="178"
+                           Source="/SCS/IMG/valencia.jpg" Height="148"/>
+                </Button>
+            </ListViewItem>
+            <ListViewItem Height="165"
+                          Width="210"
+                          Grid.Row="8"
+                          Grid.Column="6">
+                <Button x:Name="BtnVillareal"
+                        Height="165"
+                        Width="210"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Cursor="Hand"
+                        Background="Transparent"
+                        BorderBrush="Transparent" Click="BtnVillareal_Click" >
+                    <Image Width="178"
+                           Source="/SCS/IMG/villareal.jpg" Height="148"/>
                 </Button>
             </ListViewItem>
             <!--#ENDREGION-->
-
+            <!--#REGION FRAMECLUBS-->
+            <Frame x:Name="FrameClubs"
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   Grid.RowSpan="10"
+                   Grid.ColumnSpan="8"/>
+            <!--#ENDREGION-->
 
 
         </Grid>

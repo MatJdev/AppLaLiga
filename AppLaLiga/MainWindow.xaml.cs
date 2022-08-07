@@ -1,19 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using MaterialDesignThemes.Wpf;
 using System.Configuration;
+using AppLaLiga.Views;
+using System.Data.SqlClient;
 
 namespace AppLaLiga
 {
@@ -26,7 +17,7 @@ namespace AppLaLiga
         {
             InitializeComponent();
 
-            string miConexion = ConfigurationManager.ConnectionStrings["AppLaLiga.Properties.Settings.LaLigaConnectionString"].ConnectionString;
+            //string miConexion = ConfigurationManager.ConnectionStrings["AppLaLiga.Properties.Settings.LaLigaConnectionString"].ConnectionString;
         }
 
         public bool IsDarkTheme { get; set; }
@@ -34,24 +25,22 @@ namespace AppLaLiga
 
         private void toggleTheme(object sender, RoutedEventArgs e)
         {
-            //get the current theme used in the application
+            //Obtención del tema que va a utilizar
             ITheme theme = paletteHelper.GetTheme();
 
-            //if condition true, then set IsDarkTheme to false and, SetBaseTheme to light
+            //Activa y desactiva el modo oscuro
             if (IsDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
             {
                 IsDarkTheme = false;
                 theme.SetBaseTheme(Theme.Light);
             }
-
-            //else set IsDarkTheme to true and SetBaseTheme to dark
             else
             {
                 IsDarkTheme = true;
                 theme.SetBaseTheme(Theme.Dark);
             }
 
-            //to apply the changes use the SetTheme function
+            //Para aplicar los cambios uso la función SetTheme
             paletteHelper.SetTheme(theme);
         }
 
@@ -73,8 +62,67 @@ namespace AppLaLiga
 
         private void doLogin(object sender, RoutedEventArgs e)
         {
-            Window1 w1 = new Window1();
-            w1.Show();
+            logins();
+        }
+
+        private string miConexion = ConfigurationManager.ConnectionStrings["AppLaLiga.Properties.Settings.LaLigaConnectionString"].ConnectionString;
+        //Atributos para pasar información del usuario de una ventana a otra
+        public int admin;
+        public string nom;
+        public string pass;
+
+        public void logins()
+        {
+            try
+            {
+                using(SqlConnection conexion = new SqlConnection(miConexion))
+                {
+                    conexion.Open();
+                    using (SqlCommand cmd = new SqlCommand("SELECT cNombre, cPass, nAdmin FROM TUsuario WHERE cNombre = '" + txtUsername.Text + "' AND cPass = '" + txtPassword.Password.ToString() + "'", conexion))
+                    {
+                        SqlDataReader dr = cmd.ExecuteReader();
+
+                        if (dr.Read())
+                        {
+                            //Guarda en la variable admin el valor de la columna nAdmin de la consulta realizada para saber si el usuario
+                            //que inicia sesión es un Administrador o no
+                            admin = (int)dr["nAdmin"];
+                            nom = txtUsername.Text;
+                            pass = txtPassword.Password.ToString();
+                            Window1 w1 = new Window1();
+                            //Le asigna a la variable admin de la segunda pantalla el valor guardado anteriormente de la consulta SQL
+                            w1.isAdmin = admin;
+                            w1.nom = nom;
+                            w1.pass = pass;
+                            //Ocultar boton de gestion de usuarios si el usuario no es Admin
+                            if (admin == 0)
+                            {
+                                w1.LvUsers.Visibility = Visibility.Hidden;
+                            }
+                            w1.DataContext = new Clubs();
+                            w1.Show();
+                            this.Close();
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nombre de Usuario o Contraseña incorrectos");
+                        }
+                    }
+                    conexion.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void crearCuenta(object sender, RoutedEventArgs e)
+        {
+            CrearUsuario usuarioNuevo = new CrearUsuario();
+            usuarioNuevo.Show();
             this.Close();
         }
     }

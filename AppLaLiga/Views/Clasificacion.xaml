@@ -21,21 +21,27 @@
                     <Setter Property="Background" Value="#718792"/>
                     <Setter Property="BorderBrush" Value="Transparent"/>
                     <Setter Property="Foreground" Value="white"/>
+                    <!--<Setter Property="IsEnabled" Value="False" />-->
                 </Trigger>
             </Style.Triggers>
             <Style.Setters>
-                <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                <Setter Property="Height" Value="34" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="Foreground" Value="white"/>
+                <Setter Property="IsEnabled" Value="True" />
             </Style.Setters>
         </Style>
         <Style x:Key="RightAligned" TargetType="TextBlock">
             <Setter Property="HorizontalAlignment" Value="Right"/>
         </Style>
     </UserControl.Resources>
-    
+
     <!--#REGION CONTENIDO-->
-    <Border CornerRadius="10"
-            Background="#718792">
+    <Border CornerRadius="10">
+        <Border.Background>
+            <ImageBrush ImageSource="/SCS/IMG/cesped1.jpg"/>
+        </Border.Background>
         <Grid Name="GridClasificacion">
             <!--#REGION COL&ROWS-->
             <Grid.ColumnDefinitions>
@@ -48,21 +54,139 @@
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="15"/>
                 <RowDefinition />
+                <RowDefinition Height="34"/>
+                <RowDefinition Height="34"/>
+                <RowDefinition Height="34"/>
+                <RowDefinition Height="34"/>
+                <RowDefinition Height="34"/>
+                <RowDefinition Height="34"/>
+                <RowDefinition Height="34"/>
+                <RowDefinition Height="34"/>
+                <RowDefinition Height="34"/>
+                <RowDefinition Height="34"/>
+                <RowDefinition Height="34"/>
+                <RowDefinition Height="34"/>
+                <RowDefinition Height="34"/>
+                <RowDefinition Height="34"/>
+                <RowDefinition Height="34"/>
+                <RowDefinition Height="34"/>
+                <RowDefinition Height="34"/>
+                <RowDefinition Height="34"/>
+                <RowDefinition Height="34"/>
+                <RowDefinition Height="39"/>
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
             <!--#ENDREGION-->
             <!--#REGION TITULO-->
+            <Border Background="DarkSeaGreen"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Width="830"
+                    CornerRadius="10"
+                    Margin="5"/>
             <TextBlock Grid.Row="1"
                        Grid.Column="1"
                        Text="Tabla de Clasificación de la LaLiga Santander 2021/2022"
                        FontSize="30"
+                       FontWeight="SemiBold"
                        HorizontalAlignment="Center"
-                       VerticalAlignment="Center"/>
+                       VerticalAlignment="Center"
+                       Foreground="Black"/>
             <!--#ENDREGION-->
             <!--#REGION DATAGRID-->
+            <Border Background="DarkBlue"
+                    Grid.Column="0"
+                    Grid.Row="3"
+                    Grid.RowSpan="5"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Height="136"
+                    Width="20" Margin="0,0,0,5"/>
+            <Border Background="Orange"
+                    Grid.Column="0"
+                    Grid.Row="7"
+                    Grid.RowSpan="3"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Height="68"
+                    Width="20" Margin="0,0,0,5"/>
+            <Border Background="LightGreen"
+                    Grid.Column="0"
+                    Grid.Row="9"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Height="34"
+                    Width="20" Margin="0,0,0,5" Grid.RowSpan="2"/>
+            <Border Background="White"
+                    Grid.Column="0"
+                    Grid.Row="10"
+                    Grid.RowSpan="11"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Height="340"
+                    Width="20" Margin="0,29,0,0"/>
+            <Border Background="DarkRed"
+                    Grid.Column="0"
+                    Grid.Row="20"
+                    Grid.RowSpan="4"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Height="102"
+                    Width="20" Margin="0,29,0,0"/>
+            <Border Background="DarkSeaGreen"
+                    Grid.Column="1"
+                    Grid.Row="24"
+                    Width="670"
+                    CornerRadius="10"
+                    Margin="10"/>
+            <Border Background="DarkBlue"
+                    Grid.Column="1"
+                    Grid.Row="24"
+                    VerticalAlignment="Center"
+                    Height="20"
+                    Width="50" Margin="241,0,794,0"/>
+            <TextBlock Text="Champions League"
+                       Grid.Column="1"
+                       Grid.Row="24"
+                       Foreground="Black"
+                       FontWeight="Bold" Margin="296,16,679,15"/>
+            <Border Background="Orange"
+                    Grid.Column="1"
+                    Grid.Row="24"
+                    VerticalAlignment="Center"
+                    Height="20"
+                    Width="50" Margin="411,0,624,0"/>
+            <TextBlock Text="Europa League"
+                       Grid.Column="1"
+                       Grid.Row="24"
+                       Foreground="Black"
+                       FontWeight="Bold" Margin="465,16,535,15"/>
+            <Border Background="LightGreen"
+                    Grid.Column="1"
+                    Grid.Row="24"
+                    VerticalAlignment="Center"
+                    Height="20"
+                    Width="50" Margin="555,0,480,0"/>
+            <TextBlock Text="UEFA Conference League"
+                       Grid.Column="1"
+                       Grid.Row="24"
+                       Foreground="Black"
+                       FontWeight="Bold" Margin="609,16,330,14"/>
+            <Border Background="DarkRed"
+                    Grid.Column="1"
+                    Grid.Row="24"
+                    VerticalAlignment="Center"
+                    Height="20"
+                    Width="50" Margin="755,0,280,0"/>
+            <TextBlock Text="Descenso"
+                       Grid.Column="1"
+                       Grid.Row="24"
+                       Foreground="Black"
+                       FontWeight="Bold" Margin="810,16,217,14"/>
             <DataGrid x:Name="GridDatos"
                       Grid.Row="3"
                       Grid.Column="1"
+                      Grid.RowSpan="21"
                       AutoGenerateColumns="False"
                       Background="#455a64"
                       Foreground="White"
@@ -78,44 +202,59 @@
                       GridLinesVisibility="Horizontal"
                       HorizontalGridLinesBrush="#718792"
                       BorderBrush="AliceBlue"
-                      HorizontalAlignment="Center">
+                      HorizontalAlignment="Center" RowHeight="34">
                 <DataGrid.Columns>
-                    <!--<DataGridTemplateColumn Header="Posición"
-                                            Width="245">
+                    <DataGridTemplateColumn Header="Admin"
+                                            Width="100"
+                                            Visibility="Visible"                                          
+                                            x:Name="Admin">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <DockPanel>
-                                    --><!--CREACION BOTONES PARA CRUD--><!--
+                                    <!--CREACION BOTONES PARA CRUD-->
+                                    <Button Content="Editar"
+                                            x:Name="BtnEditar"
+                                            Background="Beige"
+                                            Width="70"
+                                            BorderBrush="Transparent" Click="BtnEditar_Click"
+                                            CommandParameter="{Binding nEquipoID}"/>
                                 </DockPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>-->
+                    </DataGridTemplateColumn>
                     <DataGridTextColumn Header="Posición"
                                         Width="*"
-                                        Binding="{Binding rowNum}"/>
+                                        Binding="{Binding rowNum}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="Equipo"
                                         Width="150"
-                                        Binding="{Binding cNombre}"/>
+                                        Binding="{Binding cNombre}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="Puntos"
                                         Width="*"
-                                        Binding="{Binding nPuntos}"/>
+                                        Binding="{Binding nPuntos}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="PJ"
                                         Width="*"
-                                        Binding="{Binding nPJ}"/>
+                                        Binding="{Binding nPJ}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="PG"
                                         Width="*"
-                                        Binding="{Binding nPG}"/>
+                                        Binding="{Binding nPG}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="PE"
                                         Width="*"
-                                        Binding="{Binding nPE}"/>
+                                        Binding="{Binding nPE}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="PP"
                                         Width="*"
-                                        Binding="{Binding nPP}"/>
+                                        Binding="{Binding nPP}" IsReadOnly="True"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <!--#ENDREGION-->           
+            <!--#ENDREGION-->
+            <!--#REGION FRAMECLUB-->
+            <Frame x:Name="FrameEditClubs"
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   Grid.RowSpan="25"
+                   Grid.ColumnSpan="3"/>
+            <!--#ENDREGION-->
         </Grid>
     </Border>
     <!--#ENDREGION-->
-    
+
 </UserControl>
