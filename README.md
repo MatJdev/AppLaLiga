@@ -7,7 +7,7 @@ Log in<br>
 <img src="https://github.com/MatJdev/AppLaLiga/assets/95143980/5d9a333d-9a88-4813-bf4f-827931d1a7b7" height="500px" />
 <br>
 
-Log up<br>
+Sign up<br>
 <img src="https://github.com/MatJdev/AppLaLiga/assets/95143980/882fd9d9-0177-48f9-8525-dd1ce964fe14" height="500px" />
 <br>
 
